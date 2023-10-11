@@ -275,6 +275,8 @@ if (window.location.pathname === '/payment.html') {
     const pay=document.querySelector("#pay");
     pay.addEventListener('click', () => {
         // console.log('paid');
+        pay.disabled=true;
+        pay.textContent="Loading..."
         setTimeout(() => {
             window.location.href="./successfull.html";
         }, 2000);
