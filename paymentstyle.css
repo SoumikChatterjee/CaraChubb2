@@ -1,0 +1,7 @@
+body { margin-top:40px; }
+.panel-title {display: inline;font-weight: bold;}
+.checkbox.pull-right { margin: 0; }
+.pl-ziro { padding-left: 0px; }
+.container{
+    margin-left: 40vw;
+}

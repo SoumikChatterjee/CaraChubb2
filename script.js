@@ -1,6 +1,6 @@
 console.log(window.location.pathname);
 
-if (window.location.pathname === '/index.html' || window.location.pathname === '/') {
+if (window.location.pathname === '/index.html' || window.location.pathname === '/' || window.location.pathname === '/cart.html') {
     const body = document.querySelector('.pro-container');
     const categoryDiv = document.querySelector('.category');
 
@@ -172,9 +172,14 @@ if (window.location.pathname === "/cart.html") {
                 minusButton.style.marginRight = '10px';
                 minusButton.textContent = '-';
                 minusButton.addEventListener('click', () => {
+
                     var cartItems = JSON.parse(localStorage.getItem('cart')) || [];
                     const index = cartItems.indexOf((product.id));
                     cartItems.splice(index, 1);
+                    if (cartItems.length === 0) {
+
+                        localStorage.setItem('cart-total', 0);
+                    }
                     localStorage.setItem('cart', JSON.stringify(cartItems));
                     location.reload();
                 });
@@ -198,13 +203,21 @@ if (window.location.pathname === "/cart.html") {
                 b.innerText = 'Remove Item';
                 b.addEventListener('click', () => {
 
+
                     var cartItems = JSON.parse(localStorage.getItem('cart')) || [];
                     var index = cartItems.indexOf((product.id));
+
                     while (index != -1) {
                         cartItems.splice(index, 1);
                         index = cartItems.indexOf((product.id));
+                        if (cartItems.length === 0) {
+
+                            localStorage.setItem('cart-total', 0);
+                        }
                     }
                     localStorage.setItem('cart', JSON.stringify(cartItems));
+                    console.log(cartItems.length);
+
                     location.reload();
 
                 });
@@ -236,7 +249,7 @@ if (window.location.pathname === "/cart.html") {
         Promise.all(promises).then(() => {
             const total = document.querySelector('#num');
             localStorage.setItem('cart-total', total.textContent);
-          });
+        });
     }
     function updateCartItems(cartItems, summary) {
         const newCartItems = [];
@@ -252,32 +265,32 @@ if (window.location.pathname === "/cart.html") {
 
 
 if (window.location.pathname === '/payment.html') {
-    const proceed = document.querySelector('#proceed');
-    const total=document.querySelector("#payment-total");
-    const temp=document.createElement('h1');
-        temp.textContent="Total Payble amount:- "+localStorage.getItem('cart-total');;
-        total.appendChild(temp);
+    
     // const secondName=document.querySelector('#inputPassword4').value;
+    const sp = document.querySelector('#aeiou');
+    console.log(sp);
+    const cartTotal = localStorage.getItem('cart-total');
+    sp.textContent = String(cartTotal);
+    
+    const pay=document.querySelector("#pay");
+    pay.addEventListener('click', () => {
+        // console.log('paid');
+        setTimeout(() => {
+            window.location.href="./successfull.html";
+        }, 2000);
+    })
 
-    proceed.addEventListener('click', (e) => {
-        const firstName = document.querySelector('#inputEmail4').value;
-        const secondName = document.querySelector('#inputEmail4').value;
-        const addr = document.querySelector('#inputAddress').value;
-        const addr2 = document.querySelector("#inputAddress2").value;
-        const pin = document.querySelector("#inputZip").value;
-        const upi = document.querySelector("#inputCity").value;
-        
-        
+    
 
-        if (firstName === '' || secondName === '' || addr === '' || addr2 === '' || pin === '' || upi === '') {
-            alert('Please enter all inputs');
-        }
-        else {
-
-            e.preventDefault();
-            alert('Payment Successful');
-        }
-    });
+}
+if(window.location.pathname === '/successfull.html')
+{
+    const date=document.querySelector('#newdate');
+    date.textContent=new Date();
+    const sp = document.querySelector('#aeiou');
+    console.log(sp);
+    const cartTotal = localStorage.getItem('cart-total');
+    sp.textContent = String(cartTotal);
     
 }
 if (window.location.pathname === '/card.html') {
