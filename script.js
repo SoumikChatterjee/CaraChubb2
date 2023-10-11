@@ -265,35 +265,56 @@ if (window.location.pathname === "/cart.html") {
 
 
 if (window.location.pathname === '/payment.html') {
-    
+
     // const secondName=document.querySelector('#inputPassword4').value;
     const sp = document.querySelector('#aeiou');
     console.log(sp);
     const cartTotal = localStorage.getItem('cart-total');
     sp.textContent = String(cartTotal);
-    
-    const pay=document.querySelector("#pay");
+
+    const cardNumberInput = document.querySelector('#cardNumber');
+    const expityMonthInput = document.querySelector('#expityMonth');
+    const expityYearInput = document.querySelector('#expityYear');
+    const cvCodeInput = document.querySelector('#cvCode');
+    const payButton = document.querySelector('#pay');
+    console.log(payButton);
+    if (cardNumberInput.value && expityMonthInput.value && expityYearInput.value && cvCodeInput.value) {
+        payButton.disabled = false;
+    } else {
+        payButton.disabled = true;
+    }
+    [cardNumberInput, expityMonthInput, expityYearInput, cvCodeInput].forEach(input => {
+        input.addEventListener('input', () => {
+            if (cardNumberInput.value && expityMonthInput.value && expityYearInput.value && cvCodeInput.value) {
+                payButton.disabled = false;
+            } else {
+                payButton.disabled = true;
+            }
+        });
+    });
+
+
+    const pay = document.querySelector("#pay");
     pay.addEventListener('click', () => {
         // console.log('paid');
-        pay.disabled=true;
-        pay.textContent="Loading..."
+        pay.disabled = true;
+        pay.textContent = "Loading..."
         setTimeout(() => {
-            window.location.href="./successfull.html";
+            window.location.href = "./successfull.html";
         }, 2000);
     })
 
-    
+
 
 }
-if(window.location.pathname === '/successfull.html')
-{
-    const date=document.querySelector('#newdate');
-    date.textContent=new Date();
+if (window.location.pathname === '/successfull.html') {
+    const date = document.querySelector('#newdate');
+    date.textContent = new Date();
     const sp = document.querySelector('#aeiou');
     console.log(sp);
     const cartTotal = localStorage.getItem('cart-total');
     sp.textContent = String(cartTotal);
-    
+
 }
 if (window.location.pathname === '/card.html') {
     const params = new URLSearchParams(window.location.search);
