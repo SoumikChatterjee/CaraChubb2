@@ -1,0 +1,153 @@
+@import url('https://fonts.googleapis.com/css2?family=Gabarito&family=League+Spartan:wght@300&family=Montserrat:wght@300&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'League Spartan', sans-serif;
+}
+h1{
+    font-size: 50px;
+    line-height: 64px;
+    color: #222;
+}
+h2{
+    font-size: 46px;
+    line-height: 54px;
+    color: #222;
+}
+h4{
+    font-weight: 700;
+    font-size: 20px;
+}
+h6{
+    font-size: 15px;
+    color: #222;
+}
+p{
+    font-size: 16px;
+    color: #465b52;
+    margin: 15px 0 20px 0;
+}
+.section-p1{
+    padding:40px 80px;
+}
+.section-m1{
+    margin:40px 0;
+}
+body{
+    width: 100%;
+}
+
+
+#product1{
+    text-align: center;
+}
+.pro-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+#product1 .pro{
+    width: 23%;
+    min-width: 250px;
+    padding: 10px 12px;
+    border: 1px solid #cce7d0;
+    border-radius: 25px;
+    cursor: pointer;
+    box-shadow: 20px 20px 30px rgba(0,0,0,0.02);
+    margin: 15px 0;
+    transition: 0.2s ease;
+    /* background-color: red; */
+    height: 60vh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+#product1 .pro button, .card-rightDiv button{
+    cursor: pointer;
+    
+}
+#product1 .pro:hover{
+    box-shadow: 20px 20px 30px rgba(0,0,0,0.06);
+}
+#product1 .pro img{
+    width: 90%;
+    height: 50%;
+    border-radius: 20px;
+}
+#product1 .pro des{
+    text-align:  start;
+    padding: 10px 0;
+}
+
+.cartItem{
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    padding: 2vh 4vw;
+}
+.total{
+    display: flex;
+    background-color: yellow;
+    justify-content: space-between;
+    color: black;
+    padding: 2vh 10vw;
+    width: 90%;
+    color: black;
+    font-weight: bolder;
+
+    margin: auto;
+}
+.cartf button{
+    padding: 1.5vh 2.5vw;
+    border: none;
+    background-color: red;
+    font-weight: bolder;
+}
+.checkout{
+    display: flex;
+    justify-content: center;
+}
+.checkout button{
+    margin-top: 3vh;
+    border: none;
+    background-color: yellow;
+    font-weight: bold;
+    padding: 2vh 4vw;
+}
+#pro-des{
+    display: flex;
+    justify-content: center;
+    color: green;
+    font-size: 6vw;
+
+}
+.product-details
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 7vh 10vw;
+    margin-top: 15vh;
+}
+.product-details img{
+    width: 15vw;
+}
+.card-rightDiv{
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    gap:20px
+}
+.card-rightDiv p{
+    color: black;
+}
+.card-rightDiv span{
+    font-weight: bold;
+}
+.card-price{
+    font-size: 3vw;
+}
+#payment-total{
+    background-color: rgb(194, 194, 21);
+}
