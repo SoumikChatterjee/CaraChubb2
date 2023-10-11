@@ -4,7 +4,7 @@ if (window.location.pathname === '/index.html' || window.location.pathname === '
     const body = document.querySelector('.pro-container');
     const categoryDiv = document.querySelector('.category');
 
-
+    let products = [];
     const getCategories = async () => {
         const response = await fetch('https://fakestoreapi.com/products/categories');
         const data = await response.json();
@@ -21,17 +21,18 @@ if (window.location.pathname === '/index.html' || window.location.pathname === '
 
                 categoryDiv.appendChild(a);
             }
+            a.addEventListener('click', () => {
+                const filteredProducts = products.filter(product => product.category === category);
+                renderProducts(filteredProducts);
+            });
 
         })
     }
-    getCategories();
-
     var cartItems = JSON.parse(localStorage.getItem('cart')) || []
+    const renderProducts = (products) => {
+        body.innerHTML = ''; // Clear the container before rendering new products
 
-    const getElement = async () => {
-        const response = await fetch('https://fakestoreapi.com/products');
-        const data = await response.json();
-        const addProduct = (product) => {
+        products.forEach((product) => {
             const container = document.createElement('div');
             container.classList.add('pro');
 
@@ -46,12 +47,14 @@ if (window.location.pathname === '/index.html' || window.location.pathname === '
             title.textContent = product.title;
             description.appendChild(title);
 
-
             const price = document.createElement('p');
             price.textContent = `$${product.price}`;
             description.appendChild(price);
 
             container.appendChild(description);
+            body.appendChild(container);
+
+            //********************** 
 
             const cart = document.createElement('button');
             // cart.textContent = 'Add to Cart';
@@ -90,19 +93,27 @@ if (window.location.pathname === '/index.html' || window.location.pathname === '
             container.addEventListener('click', () => {
                 window.location.href = `./card.html?id=${product.id}`;
             })
-            // Apply CSS styles to the product container (uncomment these lines if needed)
-            // container.style.width = '23%';
 
-            // Add the product container to the body
-            if (body !== null)
-                body.appendChild(container);
-        };
+            //***************
 
-        // Call addProduct for each product in the data array
-        data.forEach(addProduct);
-    };
+        });
 
-    getElement();
+    }
+    const getProducts = async () => {
+        const response = await fetch('https://fakestoreapi.com/products');
+        const data = await response.json();
+
+        products = data; // Save the products data to the global variable
+
+        renderProducts(products); // Render all products on page load
+    }
+    getCategories();
+    getProducts();
+    const homeLink = document.querySelector('#home');
+    if(homeLink!=null)
+    homeLink.addEventListener('click', () => {
+        renderProducts(products); // Render all products on clicking the "Home" link
+    });
 }
 
 
