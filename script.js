@@ -1,6 +1,6 @@
 console.log(window.location.pathname);
 
-if (window.location.pathname === '/index.html') {
+if (window.location.pathname === '/index.html' || window.location.pathname === '/') {
     const body = document.querySelector('.pro-container');
     const categoryDiv = document.querySelector('.category');
 
