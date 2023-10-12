@@ -275,7 +275,7 @@ if (window.location.pathname === "/cart.html") {
 
 
 
-if (window.location.pathname === '/payment.html') {
+if (window.location.pathname === '/payment.html'||window.location.pathname === '/payment') {
 
     // const secondName=document.querySelector('#inputPassword4').value;
     const sp = document.querySelector('#aeiou');
